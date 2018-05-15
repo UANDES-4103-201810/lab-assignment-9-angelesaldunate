@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_15_130442) do
+ActiveRecord::Schema.define(version: 2018_05_15_154731) do
 
   create_table "actor_movies", force: :cascade do |t|
     t.string "role"
@@ -38,6 +38,8 @@ ActiveRecord::Schema.define(version: 2018_05_15_130442) do
     t.string "zipcode"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "movie_id"
+    t.index ["movie_id"], name: "index_addresses_on_movie_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -58,15 +60,12 @@ ActiveRecord::Schema.define(version: 2018_05_15_130442) do
 
   create_table "movies", force: :cascade do |t|
     t.string "title"
-    t.string "string"
     t.string "description"
     t.integer "duration"
     t.integer "director_id"
-    t.integer "address_id"
     t.datetime "release_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["address_id"], name: "index_movies_on_address_id"
     t.index ["director_id"], name: "index_movies_on_director_id"
   end
 
